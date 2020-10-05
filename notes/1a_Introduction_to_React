@@ -1,0 +1,25 @@
+create-react-app
+
+command to create a react app on terminal:
+    npx create-react-app appname
+
+You need:
+- browser console 
+- text editor 
+- application running on browser 
+
+console.log('message')
+- prints message onto the browser console 
+message can have dynamic js in it using { }
+e.g. "this is the message and the variable is {a}"
+
+React components are actually written in JSX 
+- with JSX you can easily make dymanic content by embedding javsacript in the curly brackets 
+
+Root component called App is at the top of the component tree of the application 
+
+passing data to components using props
+- adding a parameter to the component function 
+- as an argument, the parameter receives an object which has fields corresponding to all the props the user of the component defines 
+
+- Component names must be capitalised 
