@@ -1,0 +1,112 @@
+Newer versions of javascript need to be transpiled to an odler version that is more compatible
+- Babel 
+- transpialtion is automatically done with react 
+- Node.js is a Javascript runtime environment based on google chrome's javascript engine
+
+- javascript files can be run using the command
+node name_of_file.js 
+
+you can also write javascript into the node.js console which is opened by typing node into the 
+browsers developer tool console 
+
+Variables:
+
+const - constant variable cannot be changed 
+let - normal variable can be changed 
+
+Arrays:
+conts array = [1 ,2, 3]
+array.push[4]
+array.length // prints 4 
+console.log(array[1]) // prints 1 
+array.forEach(value => { // for loop
+    console.log(value) // prints each item in the array each to its own line 
+})
+
+- The contents of a const array can change but the array itself is constant
+
+forEach loop - receives a functin defined using the arrow syntac 
+- calls the function for each item of the array 
+- push adds a new item to the array
+
+However in react it is better to use concat . which creates a new array in which the content of the old 
+and new array are both included / returns the new array 
+
+const new_array = array.concat(5)
+
+Methods for arrays:
+map:
+
+const map_array = array.map(value => value*2) // creates a new array in which the values are multiplied by 2 
+- the function given as a parameter is used to create the items 
+- map can also transform the array into something completely different 
+
+const m1 = array.map(value => '<li>' + value + '<li>')
+// here the array is turned into an array containing strings of html 
+
+you can use ...rest to divide an array into variables and an array 
+
+const t = [1, 2, 3, 4, 5]
+const [first, second, ...rest] = t
+
+--> first = 1, second =2, rest = 3, 4, 5
+
+Objects 
+- you can define objects using object literals 
+- listing properties within braces 
+
+const object1 = {
+    name: "Peter",
+    age: 12,
+    education: "grade school"
+}
+
+you can also define another object as an objects property 
+e.g. 
+
+// here name has two properties: first and last 
+object2 = {
+    name: {
+        first: "Julia",
+        last: "Saari",
+    },
+    age: 23
+}
+
+- the properties of an object are referenced by using the "dot" notation or brackets 
+
+console.log(object1.name)
+const fieldname ='age'
+console.log(object1[fieldname]) // prints 12
+
+- you can add properties to objects by using dot notations or brackets 
+object1.address ="Helsinki"
+object2['secret number'] = 1234 // breckets must be used because a spcae is notallowed in dot notaion 
+- objects can also be defined using constructor functions 
+
+Functions:
+
+const sum = (p1, p2) => {
+    return p1+p2
+}
+
+you call it:
+
+const result= sum(1,3)
+
+- if the function only contains a single expression then braces are not needed 
+const square = p => p * p 
+
+or you can use the function declaration instead of the arrow function
+
+function product (a, b) {
+    return a*b
+}
+
+product(2, 6) // returns 12
+
+or you can put the function within a const 
+
+const average = function(a, b) {
+    return (a+b) / 2
+}
