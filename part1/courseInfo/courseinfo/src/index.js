@@ -3,22 +3,24 @@ import ReactDOM from 'react-dom'
 
 const App =() => {
 
-  const course = 'Half Stack application development'
-
-  const parts = [ // an array of the courses and their exercises 
+  const course = { 
+    name:   'Half Stack application development',
+    parts: [ // an array of the courses and their exercises 
+      {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
     {
-    name: 'Fundamentals of React',
-    exercises: 10
-  },
-  {
-    name:'Using props to pass data',
-    exercises: 7
-  },
-  {
-    name: 'State of a component',
-    exercises: 14
+      name:'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+   ]
   }
- ]
+
   const Header = (course) => {
     console.log(course)
     return <h1> {course.course} </h1>
@@ -63,9 +65,9 @@ const App =() => {
 
   return (
     <div>
-      <Header course={course}/>
-      <Content parts={parts}/>
-      <Total exercises={parts}/>
+      <Header course={course.name}/>
+      <Content parts={course.parts}/>
+      <Total exercises={course.parts}/>
     </div>
   )
 }
