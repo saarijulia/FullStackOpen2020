@@ -52,16 +52,6 @@ const App =() => {
     return partsArray
   }
 
-    /*
-    return (<>
-    <Part name={courses.name1} exercises={courses.ex1}/>
-    <Part name={courses.name2} exercises={courses.ex2}/>
-    <Part name={courses.name3} exercises={courses.ex3}/>
-    </>
-    )
-    */
-
-
 
   return (
     <div>
