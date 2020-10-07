@@ -17,6 +17,35 @@
    )
  }
 
+ const Statistics = (feedback) => {
+   const good = feedback.goodFeedback
+   const bad = feedback.badFeedback
+   const neutral = feedback.neutralFeedback
+
+
+  const average = () => {
+    const sum = good - bad
+    const total = good + bad + neutral
+    return (sum/total)
+  }
+
+  const percentagePos = () => {
+    const total = good + bad + neutral
+    return (good / total + '%')
+  }
+   return(
+     <div>
+     <Statistic name='good' value={feedback.goodFeedback}/>
+     <Statistic name='neutral' value={feedback.neutralFeedback}/>
+     <Statistic name='bad' value={feedback.badFeedback}/>
+     <Statistic name = 'average' value= {average()} /> 
+       <Statistic name = 'positive' value = {percentagePos()}/> 
+     </div>
+
+   )
+
+ }
+
 
  const App = () => {
    // save clicks of each button to its own state 
@@ -24,17 +53,6 @@
    const [neutral, setNeutral] = useState(0)
    const [bad, setBad] = useState(0)
 
-   const average = () => {
-     const sum = good - bad
-     const total = good + bad + neutral
-     return (sum/total)
-     //return {(good - bad)/(good + bad + neutral)} 
-   }
-
-   const percentagePos = () => {
-     const total = good + bad + neutral
-     return (good / total + '%')
-   }
 
    const addFeedback = (feedback, setter) => {
      setter(feedback +1)
@@ -48,11 +66,9 @@
        <Button handleClick={() => addFeedback(bad, setBad)} text='bad'/>
        
        <Header text='statistics'/>
-       <Statistic name = 'good' value = {good} />
-       <Statistic name = 'neutral' value = {neutral} />
-       <Statistic name = 'bad' value = {bad} />
-       <Statistic name = 'average' value= {average()} /> 
-       <Statistic name = 'positive' value = {percentagePos()}/> 
+       <Statistics goodFeedback={good} neutralFeedback={neutral} badFeedback={bad}/>
+       
+   
        
 
      </div>
