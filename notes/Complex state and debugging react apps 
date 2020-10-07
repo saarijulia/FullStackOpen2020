@@ -1,0 +1,21 @@
+How to deal with complex states 
+
+- the best practice is to use the useState function multiple times to create seperate pieces of state 
+- a components tate can be of any type 
+- you can create copies of object using the {...clicks, right: right +1} syntax
+    - here you are making a copy of the previous object and setting the variable right as something else 
+
+In react you should only change the state by creating a new object, you shouldnt mutate the state 
+directly 
+- because of this you should use concat instead of push when dealing with arrays 
+
+Conditional Rendering 
+- use state hooks can only be called from inside a rect function body - not from inside aloop or codiional 
+
+Event handlers must always be a function , a variable assignment or anything else wont work
+- you cant have a function call as an eventh andler either 
+
+Functions returning functions can be used in defining generic functionality that can be customised with parameters 
+- so this works as a factory to create functions 
+
+Never define components inside components 
