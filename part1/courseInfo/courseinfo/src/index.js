@@ -1,6 +1,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const Header = (course) => {
+  console.log(course)
+  return <h1> {course.course} </h1>
+}
+
+const Total = (exercises) => {
+  console.log(exercises)
+  let sum = 0;
+  exercises.exercises.forEach( part => {sum = sum + part.exercises})
+  return (
+  <p>Number of exercises {sum}</p>
+  )
+}
+
+const Part = (part) => {
+  return (<p>{part.name} {part.exercises}</p>)
+
+}
+
+const Content = (courses) => {
+  console.log(courses)
+  let partsArray =[]
+
+
+  courses.parts.forEach(part => {
+  partsArray.push(<Part name= {part.name} exercises={part.exercises}/>)
+  })
+
+  return partsArray
+}
+
 const App =() => {
 
   const course = { 
@@ -19,37 +50,6 @@ const App =() => {
       exercises: 14
     }
    ]
-  }
-
-  const Header = (course) => {
-    console.log(course)
-    return <h1> {course.course} </h1>
-  }
-
-  const Total = (exercises) => {
-    console.log(exercises)
-    let sum = 0;
-    exercises.exercises.forEach( part => {sum = sum + part.exercises})
-    return (
-    <p>Number of exercises {sum}</p>
-    )
-  }
-
-  const Part = (part) => {
-    return (<p>{part.name} {part.exercises}</p>)
-
-  }
-
-  const Content = (courses) => {
-    console.log(courses)
-    let partsArray =[]
-
-  
-    courses.parts.forEach(part => {
-    partsArray.push(<Part name= {part.name} exercises={part.exercises}/>)
-    })
-
-    return partsArray
   }
 
 

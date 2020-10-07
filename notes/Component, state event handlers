@@ -1,0 +1,51 @@
+You can have functions as a parameter you feed into a props 
+e.g. <p>Add a function in here {function()}</p> // This function is defined within the react component function 
+
+The structure of react components:
+props is an object and its parameters are its variables 
+- you can streamline the component by assigning the values of the properties directly into their own
+variable names that you can then use in your code 
+e.g. const Hello (props) => { // this is sort of like a java constructor 
+    const name = props.name
+    const age = props.age
+}
+
+You can build a react component in two ways:
+
+const Hello = (props) => {
+    const {name, age} = props
+}
+
+OR 
+
+const Hello = ({ name, age }) ≠> {} // so you leave the props definition out and just define the variables 
+
+Component Re-rendering:
+- if you want to change the appearance of the page somehow 
+- refresh() function refreshes the component --> you wrap the reactDom.render command into the refresh function
+- however this is not a good way to do it 
+
+Stateful Component / React statehook 
+- import the useState function from react 
+- use State function returns an array that contains two items 
+
+Event handling: 
+- you can set the event handlers in a function or straight in the button code 
+
+handleClick() => {
+    counter + 1
+}
+
+or 
+
+<button onClick={() => counter+1)}/> 
+
+- eventt handlers are functions that you define when you define the onClick attributes 
+
+Passing state to child components 
+- make your react components small and reusable 
+- principle: lift the state up in the component hierarchy 
+
+When the application starts, the code in App is executed 
+- the code uses a useState hook to create the application state, setting an initial value of the variable counter
+event handlers change the state of the app 
