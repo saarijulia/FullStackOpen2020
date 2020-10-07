@@ -24,22 +24,22 @@
    const [neutral, setNeutral] = useState(0)
    const [bad, setBad] = useState(0)
 
+   const average = () => {
+     const sum = good - bad
+     const total = good + bad + neutral
+     return (sum/total)
+     //return {(good - bad)/(good + bad + neutral)} 
+   }
+
+   const percentagePos = () => {
+     const total = good + bad + neutral
+     return (good / total + '%')
+   }
+
    const addFeedback = (feedback, setter) => {
      setter(feedback +1)
    }
-/*
-   const addGoodFeedback = () => {
-     setGood(good +1)
-   }
 
-   const addBadFeedback = () => {
-     setBad(bad +1)
-   }
-
-   const addNeutralFeedback = () => {
-     setNeutral(neutral + 1)
-   }
-*/
    return (
      <div>
        <Header text='give feedback'/>
@@ -51,6 +51,9 @@
        <Statistic name = 'good' value = {good} />
        <Statistic name = 'neutral' value = {neutral} />
        <Statistic name = 'bad' value = {bad} />
+       <Statistic name = 'average' value= {average()} /> 
+       <Statistic name = 'positive' value = {percentagePos()}/> 
+       
 
      </div>
    )
