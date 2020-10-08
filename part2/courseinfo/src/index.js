@@ -9,17 +9,18 @@ const Header = ({ course }) => {
 
 
 
-const Total = ({ course }) => {
-  const sum = () => {
-    let tempsum = 0
-    course.parts.map( part => {
-      return tempsum = tempsum + part.exercises
-    })
-    return (tempsum)
-  }
+const Total = ({ parts}) => {
+  console.log(parts)
+
+  const sum = parts.reduce((tempVal, part) => {
+    console.log("part:",part);
+    console.log("tempVal:",tempVal);
+    console.log("total:",tempVal+part.exercises);
+    return(tempVal+part.exercises)
+  }, 0)
 
   return (
-    <p>Number of exercises {sum()}</p>
+    <p><strong>Number of exercises {sum}</strong></p>
   )
 }
 
@@ -37,7 +38,7 @@ const Content = ({ course }) => {
     <div>
       {parts.map(part =>
         <Part key = {part.id} part ={part}/>)}
-        <Total course = {course}/>
+        <Total parts = {parts}/>
     </div>
   )
 }
