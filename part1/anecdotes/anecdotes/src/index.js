@@ -2,13 +2,38 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const Header = ({ text }) => <h1>{text}</h1>
+
 const Anecdote = ({anecdote}) => {
-  return(
-  <p>{anecdote}</p>
+  return (
+    <p>{anecdote}</p>
   )
 }
+
+const Points = (props) => {
+  const [points, setPoints] = useState(() => props.initialPoints)
+
+  const incrementPoints = (index) => {
+    const copy = [...points]
+    copy[index]++
+    setPoints(copy)
+    console.log(copy)
+  }
+
+  return(
+    <>
+    <button onClick={() => incrementPoints(props.index)}>vote</button>
+    <p>has {points[props.index]} votes</p>
+    
+    
+    </>
+  )
+
+}
+
+
+
 const App = (props) => {
-  const [selected, setSelected] = useState([])
+  const [selected, setSelected] = useState()
   const anecdotes = props.anecdotes
   const randomNum = () => (Math.floor((Math.random() * anecdotes.length)))
   
@@ -19,6 +44,7 @@ const App = (props) => {
       <Header text='Anecdotes' />
       <Anecdote anecdote={selected}/>
       <button onClick={() => setSelected(anecdotes[randomNum()])}>next anecdote</button>
+      <Points initialPoints={Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0)} index={anecdotes.indexOf(selected)}/>
       
     </div>
 
@@ -38,6 +64,9 @@ const anecdotes = [
 ]
 
 
+const anecdotePoints = [
+  Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0)
+]
 
 ReactDOM.render(
 
