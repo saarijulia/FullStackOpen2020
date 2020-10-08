@@ -22,15 +22,16 @@ const Points = (props) => {
   const indexOfHighestVote = () => {
     const highestScore = Math.max.apply(null, points)
     console.log('highest point score:', highestScore)
-    if (highestScore>0) {
-    return (
-      points.indexOf(highestScore)
-    )
+    if (highestScore > 0) {
+      return (
+        points.indexOf(highestScore)
+      )
     }
   }
 
   return (
     <>
+      <p>has {points[props.index]} votes</p>
       <button onClick={() => incrementPoints(props.index)}>vote</button>
       <Header text='Anecdote with most votes' />
       <p>{props.anecdotes[indexOfHighestVote()]}</p>
