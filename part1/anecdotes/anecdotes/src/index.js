@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const Header = ({ text }) => <h1>{text}</h1>
 
-const Anecdote = ({anecdote}) => {
+const Anecdote = ({ anecdote }) => {
   return (
     <p>{anecdote}</p>
   )
@@ -19,40 +19,39 @@ const Points = (props) => {
     console.log(copy)
   }
 
-  return(
+  const indexOfHighestVote = () => {
+    const highestScore = Math.max.apply(null, points)
+    console.log('highest point score:', highestScore)
+    if (highestScore>0) {
+    return (
+      points.indexOf(highestScore)
+    )
+    }
+  }
+
+  return (
     <>
-    <button onClick={() => incrementPoints(props.index)}>vote</button>
-    <p>has {points[props.index]} votes</p>
-    
-    
+      <button onClick={() => incrementPoints(props.index)}>vote</button>
+      <Header text='Anecdote with most votes' />
+      <p>{props.anecdotes[indexOfHighestVote()]}</p>
     </>
   )
-
 }
-
-
 
 const App = (props) => {
   const [selected, setSelected] = useState()
   const anecdotes = props.anecdotes
   const randomNum = () => (Math.floor((Math.random() * anecdotes.length)))
-  
 
   return (
-
     <div>
       <Header text='Anecdotes' />
-      <Anecdote anecdote={selected}/>
+      <Anecdote anecdote={selected} />
       <button onClick={() => setSelected(anecdotes[randomNum()])}>next anecdote</button>
-      <Points initialPoints={Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0)} index={anecdotes.indexOf(selected)}/>
-      
+      <Points initialPoints={Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf, 0)} index={anecdotes.indexOf(selected)} anecdotes={anecdotes} />
     </div>
-
   )
-
 }
-
-
 
 const anecdotes = [
   'If it hurts, do it more often',
@@ -63,12 +62,6 @@ const anecdotes = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
 
-
-const anecdotePoints = [
-  Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0)
-]
-
 ReactDOM.render(
-
   <App anecdotes={anecdotes} />, document.getElementById('root')
 )
