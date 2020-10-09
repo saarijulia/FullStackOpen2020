@@ -20,7 +20,15 @@ const App = () => {
         const nameObject = {
             name: newName,
         }
-        setPersons(persons.concat(nameObject))
+
+        console.log("New Name:", newName);
+        console.log("included: ", persons.some(person => person.name === newName))
+        
+        // only add name to phonebook if it is not included
+        persons.some(person => person.name === newName)
+        ? alert(`${newName} is already added to phonebook`)
+        :setPersons(persons.concat(nameObject))
+
         setNewName('')
     }
 
@@ -41,7 +49,7 @@ const App = () => {
             </form>
             <h2>Numbers</h2>
             <div>
-                {persons.map(person => <p>{person.name}</p>)}
+                {persons.map(person => <p key={person.name}>{person.name}</p>)}
             </div>
         </div>
     )
