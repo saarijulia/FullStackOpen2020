@@ -1,14 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import Note from './components/Note'
 
+
 const App = (props) => {
-    const [notes, setNotes] = useState(props.notes)
+    const [notes, setNotes] = useState([])
 
     // a statehook for storing the users input 
     const [newNote, setNewNote] = useState('a new note...')
 
     //statehook to determine which notes to be displayed 
     const [showAll, setShowAll] = useState(true)
+
+    // effect is run after a component has rendered 
+    useEffect(() => {
+        console.log('effect');
+        axios
+            .get('http://localhost:3001/notes')
+            .then(response => {
+                console.log('promise fulfilled');
+                setNotes(response.data)
+            })
+    }, [])
+    console.log('render', notes.length, 'notes');
 
     const notesToShow= showAll
         ? notes // if true 
