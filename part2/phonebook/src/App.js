@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PersonsList from './Components/PersonsList'
 import Form from './Components/Form'
+import TextSearch from './Components/TextSearch'
 
 const App = () => {
 
@@ -11,29 +12,36 @@ const App = () => {
         { name: 'Mary Poppendieck', number: '39-23-6423122' }
     ])
 
-    const [newFilter, setFilter] = useState(persons)
-    const [textSearch, setTextSearch] = useState('')
+    const [textSearch, setText] = useState('')
+    const [filterList, setFilterList] = useState(persons)
 
-    const changeFilter = (event) => {
-        setFilter(persons.filter(function (person) {
-            return person.name.toLowerCase().startsWith(event.target.value.toLowerCase())
-        }))
-        setTextSearch(event.target.value)
+    if (textSearch != '') {
+        return (
+            <div>
+                <h2>
+                    Phonebook
+            </h2>
+                <TextSearch textSearch={textSearch} setText={setText} setFilterList={setFilterList} persons={persons} />
+
+                <h2>add a new</h2>
+                <Form persons={persons} setPersons={setPersons} />
+                <h2>Numbers</h2>
+                <PersonsList persons={filterList} />
+            </div>
+        )
     }
 
-    return (
+    else return(
         <div>
             <h2>
                 Phonebook
             </h2>
-            <div>
-                filter shown with <input onChange={changeFilter} />
-            </div>
+            <TextSearch textSearch={textSearch} setText={setText} setFilterList={setFilterList} persons={persons} />
 
             <h2>add a new</h2>
             <Form persons={persons} setPersons={setPersons} />
             <h2>Numbers</h2>
-            <PersonsList persons={persons} textSearch={textSearch} newFilter={newFilter} />
+            <PersonsList persons={persons} />
         </div>
     )
 }
