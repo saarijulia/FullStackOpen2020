@@ -30,14 +30,8 @@ const App = () => {
       <h1>
         countries
       </h1>
-      <SearchText setSearchText={setSearchText} setFilterCountries={setFilterCountries}/> 
-      searchtext: {searchText}
-      <p>
-        debug:
-      </p>
-
-      <p>allcountries:</p>
-      <CountriesDisplay countries={countries} searchText={searchText}/>
+      <SearchText setSearchText={setSearchText} setFilterCountries={setFilterCountries} countries={countries}/> 
+      <CountriesDisplay countries={filterCountries}/>
     </div>
 
   )

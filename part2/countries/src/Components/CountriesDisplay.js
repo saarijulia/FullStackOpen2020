@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import SearchText from './SearchText'
+
 
 const CountriesDisplay = (props) => {
 const countries = props.countries
-const searchText = props.searchText
 
-if (searchText !== '') {
+if (countries.length>10) {
     return (
         <div>
-            {countries.filter(country=> country.name.toLowerCase().includes(searchText.toLowerCase())).map(country => <p key={country.name}> {country.name}</p>)}
+            <p>Too many matches, specify another filter</p>
         </div>
     )
 }
-
 return (
     <div>
-        {countries.map(country => <p key={country.name}>{country.name}</p>)}
-
+        {countries.map(country => <p key={country.name}> {country.name}</p>)}
+         
     </div>
 )
 
 }
 
 export default CountriesDisplay
+// {countries.filter(country=> country.name.toLowerCase().includes(searchText.toLowerCase())).map(country => <p key={country.name}> {country.name}</p>)}
