@@ -1,4 +1,5 @@
 import React from 'react'
+import CountryView from './CountryView'
 
 
 const CountriesDisplay = (props) => {
@@ -13,21 +14,8 @@ const CountriesDisplay = (props) => {
     } else if (countries.length === 1) {
         return (
             <>
-                {countries.map(country =>
-                    <div key={country.name}>
-                        <h1>{country.name}</h1>
-                        <p>capital: {country.capital}</p>
-                        <p>population: {country.population}</p>
-                        <h2>languages</h2>
-                        <ul>
-                            {countries.map(country=>
-                                country.languages.map(language=> <li key={language.name}>{language.name}</li>)
-                        )}
-                        </ul>
-                        {countries.map(country => <img key={country.name} src={country.flag} width="400" height="400" alt={country.flag}/>)}
-                    </div>)}
-
-            </>
+           <CountryView country={countries[0]}/>
+           </>
         )
     }
     return (
@@ -41,3 +29,18 @@ const CountriesDisplay = (props) => {
 
 export default CountriesDisplay
 // {countries.filter(country=> country.name.toLowerCase().includes(searchText.toLowerCase())).map(country => <p key={country.name}> {country.name}</p>)}∑
+/*
+                {countries.map(country =>
+                    <div key={country.name}>
+                        <h1>{country.name}</h1>
+                        <p>capital: {country.capital}</p>
+                        <p>population: {country.population}</p>
+                        <h2>languages</h2>
+                        <ul>
+                            {countries.map(country=>
+                                country.languages.map(language=> <li key={language.name}>{language.name}</li>)
+                        )}
+                        </ul>
+                        {countries.map(country => <img key={country.name} src={country.flag} width="400" height="400" alt={country.flag}/>)}
+                    </div>)}
+*/ 
