@@ -2,7 +2,6 @@ import React from 'react'
 
 const CountryView = (props) => {
     const country = props.country
-   
 
         return (<div>
             <h1>{country.name}</h1>
