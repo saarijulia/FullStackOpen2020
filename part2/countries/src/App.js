@@ -5,6 +5,7 @@ import SearchText from './Components/SearchText'
 import CountryView from './Components/CountryView'
 import Header from './Components/Header'
 
+
 const App = () => {
 
   const [countries, setCountries] = useState([])
