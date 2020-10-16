@@ -1,46 +1,28 @@
-import React from 'react'
-import CountryView from './CountryView'
+import React, { useState, useEffect } from 'react'
+
 
 
 const CountriesDisplay = (props) => {
+    // the countries to be shown
     const countries = props.countries
+    // state toggle to view a country 
+    const setShowCountryView = props.setShowCountryView
+    const setSelectedCountry = props.setSelectedCountry
 
-    if (countries.length > 10) {
-        return (
-            <div>
-                <p>Too many matches, specify another filter</p>
-            </div>
-        )
-    } else if (countries.length === 1) {
-        return (
-            <>
-           <CountryView country={countries[0]}/>
-           </>
-        )
-    }
     return (
-        <div>
-            {countries.map(country => <p key={country.name}> {country.name}</p>)}
-
-        </div>
+        <div id="display">
+                {countries.map(country => <p key={country.name}>
+                    {country.name}
+                    <button onClick={() => {
+                        setSelectedCountry(country)
+                        console.log(country);
+                        setShowCountryView(true)
+                    }}>
+                        show
+             </button>
+                </p>)}
+            </div>
     )
-
 }
 
 export default CountriesDisplay
-// {countries.filter(country=> country.name.toLowerCase().includes(searchText.toLowerCase())).map(country => <p key={country.name}> {country.name}</p>)}∑
-/*
-                {countries.map(country =>
-                    <div key={country.name}>
-                        <h1>{country.name}</h1>
-                        <p>capital: {country.capital}</p>
-                        <p>population: {country.population}</p>
-                        <h2>languages</h2>
-                        <ul>
-                            {countries.map(country=>
-                                country.languages.map(language=> <li key={language.name}>{language.name}</li>)
-                        )}
-                        </ul>
-                        {countries.map(country => <img key={country.name} src={country.flag} width="400" height="400" alt={country.flag}/>)}
-                    </div>)}
-*/ 
