@@ -57,7 +57,7 @@
     {
       "content": "Bug Fix",
       "date": "2020-10-19T13:23:05.422Z",
-      "important": false,
+      "important": true,
       "id": 10
     }
   ]

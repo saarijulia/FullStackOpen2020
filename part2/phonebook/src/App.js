@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import PersonsList from './Components/PersonsList'
-import Form from './Components/Form'
-import TextSearch from './Components/TextSearch'
-import axios from 'axios'
+import PersonsList from './components/PersonsList'
+import Form from './components/Form'
+import TextSearch from './components/TextSearch'
+import phonenumberService from './services/phonenumbers'
+
 
 const App = () => {
 
@@ -14,13 +15,11 @@ const App = () => {
 
     useEffect(() => {
         console.log('effect');
-        axios
-            .get('http://localhost:3001/persons')
-            .then(response => {
-                console.log('promise fulfilled');
-                setPersons(response.data)
-                console.log("get data",response);
-            })
+        phonenumberService.getAll()
+        .then(response => {
+            setPersons(response.data)
+            console.log('get person data',response.data);
+        })
     }, [])
     console.log('render', persons.length, 'persons');
 
