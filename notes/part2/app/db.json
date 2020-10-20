@@ -1,22 +1,64 @@
 {
-    "notes": [
-        {
-          "id": 1,
-          "content": "HTML is easy",
-          "date": "2019-05-30T17:30:31.098Z",
-          "important": true
-        },
-        {
-          "id": 2,
-          "content": "Browser can execute only JavaScript",
-          "date": "2019-05-30T18:39:34.091Z",
-          "important": false
-        },
-        {
-          "id": 3,
-          "content": "GET and POST are the most important methods of HTTP protocol",
-          "date": "2019-05-30T19:20:14.298Z",
-          "important": true
-        }
-      ]
+  "notes": [
+    {
+      "id": 1,
+      "content": "HTML is easy",
+      "date": "2019-05-30T17:30:31.098Z",
+      "important": true
+    },
+    {
+      "id": 2,
+      "content": "Browser can execute only JavaScript",
+      "date": "2019-05-30T18:39:34.091Z",
+      "important": false
+    },
+    {
+      "id": 3,
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "date": "2019-05-30T19:20:14.298Z",
+      "important": true
+    },
+    {
+      "content": "This is a new note",
+      "date": "2020-10-19T05:54:29.974Z",
+      "important": true,
+      "id": 4
+    },
+    {
+      "content": "Remember to check your console",
+      "date": "2020-10-19T05:55:01.221Z",
+      "important": true,
+      "id": 5
+    },
+    {
+      "content": "This updates the app data",
+      "date": "2020-10-19T05:59:52.007Z",
+      "important": false,
+      "id": 6
+    },
+    {
+      "content": "a new note...",
+      "date": "2020-10-19T10:13:31.103Z",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "Addinf note with noteservice",
+      "date": "2020-10-19T13:15:51.779Z",
+      "important": true,
+      "id": 8
+    },
+    {
+      "content": "refactor of part 2 notes app",
+      "date": "2020-10-19T13:22:18.983Z",
+      "important": false,
+      "id": 9
+    },
+    {
+      "content": "Bug Fix",
+      "date": "2020-10-19T13:23:05.422Z",
+      "important": false,
+      "id": 10
+    }
+  ]
 }
