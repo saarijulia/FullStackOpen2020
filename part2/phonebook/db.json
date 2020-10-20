@@ -1,3 +1,9 @@
 {
-  "persons": []
+  "persons": [
+    {
+      "name": "Nick Miller",
+      "number": "234234234",
+      "id": 3
+    }
+  ]
 }
