@@ -16,10 +16,6 @@ const deleteNumber = (person) => {
     if (result) {
         return (
             axios.delete(`${baseUrl}/${person.id}`)
-                .catch(error => {
-                    console.log('person does not exist in system')
-                    alert('This person does not exist in phonebook')
-                })
             )
     }
 }

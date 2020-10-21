@@ -10,7 +10,7 @@ const App = () => {
     const [persons, setPersons] = useState([])
     const [textSearch, setText] = useState('')
     const [filterList, setFilterList] = useState(persons)
-    const [message, setMessage] = useState(null)
+    const [message, setMessage] = useState({message: null, error: false})
 
     useEffect(() => {
         console.log('effect');
@@ -34,7 +34,7 @@ const App = () => {
                 <h2>add a new</h2>
                 <Form persons={persons} setPersons={setPersons} setMessage={setMessage} />
                 <h2>Numbers</h2>
-                <PersonsList persons={filterList} />
+                <PersonsList persons={filterList} setMessage={setMessage} />
             </div>
         )
     }
@@ -50,7 +50,7 @@ const App = () => {
             <h2>add a new</h2>
             <Form persons={persons} setPersons={setPersons} setMessage={setMessage} />
             <h2>Numbers</h2>
-            <PersonsList persons={persons} />
+            <PersonsList persons={persons} setMessage={setMessage} />
         </div>
     )
 }

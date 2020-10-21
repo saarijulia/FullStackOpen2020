@@ -1,25 +1,44 @@
 import React from 'react'
-
+const messageStyle = {
+    color: 'green',
+    fontSize: '20px',
+    background: 'lightgray',
+    borderStyle: 'solid',
+    borderColor: 'green',
+    padding: '10px',
+    marginBottom: '10px',
+}
+const errorStyle = {
+    color: 'red',
+    fontSize: '20px',
+    background: 'lightgray',
+    borderStyle: 'solid',
+    borderColor: 'red',
+    padding: '10px',
+    marginBottom: '10px',
+}
 const Notification = ({message}) => {
-
-    const messageStyle = {
-        color: 'green',
-        fontSize: '20px',
-        background: 'lightgray',
-        borderStyle: 'solid',
-        borderColor: 'green',
-        padding: '10px',
-        marginBottom: '10px',
-    }
-    if (message === null) {
+    
+    const error = message.error
+    const text = message.message
+    
+    if (text === null) {
         return null
     }
-
-    return (
+    else if (error) {
+        return (
+            <div style={errorStyle}>
+                {text}
+            </div>
+        )
+    }
+   
+        return (
         <div style={messageStyle}>
-            {message}
+            {text}
         </div>
     )
+        
 
 }
 

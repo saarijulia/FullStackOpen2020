@@ -28,20 +28,26 @@ const Form = ({ persons, setPersons, setMessage }) => {
                     {...persons.find(person=>person.name===newName), 
                     number: newNumber})
                     .then(response => {
-                        setMessage(`${newName}'s number was changed`)
+                        setMessage({message:`${newName}'s number was changed`, error:false})
                         phonenumberService.getAll()
                         .then(response => setPersons(response.data))
+                    })
+                    .catch(error => {
+                        setMessage(
+                            {message:`${newName} does not exist in the phonebook`,
+                            error:true}
+                        )
                     })     
             :   phonenumberService.addName(nameObject)
                 .then(response => {
-                    setMessage(nameObject.name + ' was added to phonebook')
+                    setMessage({message: nameObject.name + ' was added to phonebook', error: false})
                     setPersons(persons.concat(response.data))
                 })
                 console.log(nameObject);
         setNewName('')
         setNewNumber('')
         setTimeout(() => {
-            setMessage(null)
+            setMessage({message:null, error:false})
         }, 5000)
     }
 
