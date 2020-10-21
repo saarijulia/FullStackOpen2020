@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import phonenumberService from '../services/phonenumbers'
 
-const Form = ({ persons, setPersons }) => {
+const Form = ({ persons, setPersons, setMessage }) => {
     const [newNumber, setNewNumber] = useState('')
     const [newName, setNewName] = useState('')
 
@@ -23,14 +23,26 @@ const Form = ({ persons, setPersons }) => {
             number: newNumber,
         }
         persons.some(person => person.name === newName)
-            ? alert(`${newName} is already added to phonebook`)
-            : phonenumberService.addName(nameObject)
+            ?   phonenumberService.update(
+                persons.find(person=>person.name===newName).id,
+                    {...persons.find(person=>person.name===newName), 
+                    number: newNumber})
+                    .then(response => {
+                        setMessage(`${newName}'s number was changed`)
+                        phonenumberService.getAll()
+                        .then(response => setPersons(response.data))
+                    })     
+            :   phonenumberService.addName(nameObject)
                 .then(response => {
+                    setMessage(nameObject.name + ' was added to phonebook')
                     setPersons(persons.concat(response.data))
-
                 })
+                console.log(nameObject);
         setNewName('')
         setNewNumber('')
+        setTimeout(() => {
+            setMessage(null)
+        }, 5000)
     }
 
     return (

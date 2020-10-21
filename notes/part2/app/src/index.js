@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import './index.css'
 
 // taks the data contained withing the response, stores it in a variable and prints the notes to console 
 

@@ -22,9 +22,17 @@ const deleteNumber = (person) => {
                 })
             )
     }
-
-
-   
 }
 
-export default {getAll, addName, deleteNumber}
+const update = (id, newPerson) => {
+    const result = window.confirm(`${newPerson.name} is already added to phonebook, 
+        replace the old number with a new one?`)
+    if (result) {
+        return( 
+            axios.put(`${baseUrl}/${id}`, newPerson)
+        )
+    }
+
+}
+
+export default {getAll, addName, deleteNumber, update}

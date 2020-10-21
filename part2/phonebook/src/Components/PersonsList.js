@@ -14,5 +14,4 @@ const PersonsList = (props) => {
 }
 
 
-
 export default PersonsList
